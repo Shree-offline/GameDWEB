@@ -1,10 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Guess the Number</title>
-    
-    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            background-color: #1a1a2e; 
+            color: #e0e0e0; 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center; 
+            justify-content: center; 
+            height: 100vh; 
+            margin: 0;
+        }
+
+        .game-box {
+            background-color: #16213e;
+            padding: 40px;
+            border-radius: 15px; 
+            box-shadow: 0 0 20px rgba(169, 129, 255, 0.3); 
+            text-align: center;
+        }
+
+        h2 {
+            color: #a981ff; 
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        input {
+            padding: 10px;
+            font-size: 18px;
+            border: 2px solid #a981ff;
+            border-radius: 5px;
+            background-color: #0f3460;
+            color: white;
+            outline: none;
+            text-align: center;
+            width: 80px;
+        }
+
+        button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background-color: #e94560; 
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.2s; 
+        }
+
+        button:hover {
+            background-color: #ff2e63;
+        }
+
+        #feedback {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+            min-height: 25px; 
+        }
+    </style>
 </head>
 <body>
 
@@ -17,7 +76,31 @@
         <p id="feedback"></p>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        let secretNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            let guess = document.getElementById('guessInput').value;
+            let feedback = document.getElementById('feedback');
+
+            if (!guess) {
+                feedback.innerText = "Please enter a number!";
+                feedback.style.color = "#ffb84c"; 
+                return;
+            }
+
+            if (guess == secretNumber) {
+                feedback.innerText = "🎉 You Won! 🎉";
+                feedback.style.color = "#4cff88"; 
+            } else if (guess > secretNumber) {
+                feedback.innerText = "Too high! 📉";
+                feedback.style.color = "#ff4c4c"; 
+            } else {
+                feedback.innerText = "Too low! 📈";
+                feedback.style.color = "#4c8eff"; 
+            }
+        }
+    </script>
 
 </body>
 </html>
