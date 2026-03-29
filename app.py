@@ -1,32 +1,16 @@
-import random
+from flask import Flask
 
-def play_game():
-    print("🎮 Welcome to 'Guess the Number'!")
-    print("I'm thinking of a number between 1 and 100.")
-    
-    # Generate a random number between 1 and 100
-    secret_number = random.randint(1, 100)
-    attempts = 0
-    
-    while True:
-        try:
-            # Get the player's guess
-            guess = int(input("Enter your guess: "))
-            attempts += 1
-            
-            # Check the guess against the secret number
-            if guess < secret_number:
-                print("Too low! Try a higher number. 📈")
-            elif guess > secret_number:
-                print("Too high! Try a lower number. 📉")
-            else:
-                print(f"🎉 Congratulations! You guessed the number in {attempts} attempts!")
-                break # Exit the loop because the player won
-                
-        except ValueError:
-            # Handle the case where the user types letters instead of numbers
-            print("Invalid input! Please enter a number.")
+# Initialize the Flask application
+# We tell Flask to look for our HTML/CSS/JS files in the current folder ('.')
+app = Flask(__name__, static_url_path='', static_folder='.')
 
-# Start the game
-if __name__ == "__main__":
-    play_game()
+# Create the main route for your game
+@app.route('/')
+def home():
+    # This sends your existing index.html to the user's browser
+    return app.send_static_file('index.html')
+
+# This starts the server
+if __name__ == '__main__':
+    # Render assigns a specific port, so we bind to 0.0.0.0 to make it accessible
+    app.run(host='0.0.0.0', port=10000)
