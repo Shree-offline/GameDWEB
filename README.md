@@ -26,6 +26,7 @@ This project follows standard front-end web development practices by separating 
 ## 🚀 How to Play Locally
 Want to test the game on your own machine? It's incredibly simple!
 
-1. Clone this repository to your local machine:
+<img width="1779" height="811" alt="image" src="https://github.com/user-attachments/assets/3c932249-f04d-4189-9176-980e43fd8dd6" />
+
    ```bash
    git clone [https://github.com/Shree-offline/GameDWEB.git](https://github.com/Shree-offline/GameDWEB.git)
